@@ -2,13 +2,13 @@
 /**
  * This page contains functions for modifying the metabox for second video as a content type
  *
- * @link http://moveplugins.com/doc/
+ * @link http://mintplugins.com/doc/
  * @since 1.0.0
  *
  * @package    MP Stacks Second Video
  * @subpackage Functions
  *
- * @copyright   Copyright (c) 2013, Move Plugins
+ * @copyright   Copyright (c) 2015, Mint Plugins
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @author      Philip Johnston
  */
@@ -17,7 +17,7 @@
  * Add Second Video as a content Type to the dropdown
  *
  * @since    1.0.0
- * @link     http://moveplugins.com/doc/
+ * @link     http://mintplugins.com/doc/
  * @param    array $args See link for description.
  * @return   void
  */

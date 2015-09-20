@@ -3,7 +3,7 @@
 Plugin Name: MP Stacks + Second Video
 Plugin URI: http://mintplugins.com
 Description: Display a second video in a brick
-Version: 1.0.0.0
+Version: 1.0.0.1
 Author: Mint Plugins
 Author URI: http://mintplugins.com
 Text Domain: MP_STACKS_SECOND_VIDEO
@@ -11,7 +11,7 @@ Domain Path: languages
 License: GPL2
 */
 
-/*  Copyright 2014  Phil Johnston  (email : phil@mintplugins.com)
+/*  Copyright 2015  Phil Johnston  (email : phil@mintplugins.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -34,7 +34,7 @@ License: GPL2
 */
 // Plugin version
 if( !defined( 'MP_STACKS_SECOND_VIDEO_VERSION' ) )
-	define( 'MP_STACKS_SECOND_VIDEO_VERSION', '1.0.0.0' );
+	define( 'MP_STACKS_SECOND_VIDEO_VERSION', '1.0.0.1' );
 
 // Plugin Folder URL
 if( !defined( 'MP_STACKS_SECOND_VIDEO_PLUGIN_URL' ) )

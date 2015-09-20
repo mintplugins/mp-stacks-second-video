@@ -2,13 +2,13 @@
 /**
  * This page contains functions for modifying the metabox for second video as a media type
  *
- * @link http://moveplugins.com/doc/
+ * @link http://mintplugins.com/doc/
  * @since 1.0.0
  *
  * @package    MP Stacks Second Video
  * @subpackage Functions
  *
- * @copyright   Copyright (c) 2013, Move Plugins
+ * @copyright   Copyright (c) 2014, Mint Plugins
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @author      Philip Johnston
  */
@@ -17,7 +17,7 @@
  * Add Second Video as a Media Type to the dropdown
  *
  * @since    1.0.0
- * @link     http://moveplugins.com/doc/
+ * @link     http://mintplugins.com/doc/
  * @param    array $args See link for description.
  * @return   void
  */
@@ -31,7 +31,8 @@ function mp_stacks_second_video_create_meta_box(){
 		'metabox_title' => __( '"Second Video" Content-Type', 'mp_stacks_second_video'), 
 		'metabox_posttype' => 'mp_brick', 
 		'metabox_context' => 'advanced', 
-		'metabox_priority' => 'low' 
+		'metabox_priority' => 'low',
+		'metabox_content_via_ajax' => true,
 	);
 	
 	/**
@@ -62,7 +63,7 @@ function mp_stacks_second_video_create_meta_box(){
 			'field_select_values' => array(
 				array( 
 					'type' => 'oembed',
-					'link' => 'https://moveplugins.com/embed/?post_id=3903',
+					'link' => 'https://mintplugins.com/embed/?post_id=3903',
 					'link_text' => __( '"Video" Content-Type Tutorial', 'mp_stacks'),
 					'target' => NULL
 				),
@@ -76,11 +77,14 @@ function mp_stacks_second_video_create_meta_box(){
 	 */
 	$mp_stacks_second_video_add_meta_box = has_filter('mp_stacks_second_video_meta_box_array') ? apply_filters( 'mp_stacks_second_video_meta_box_array', $mp_stacks_second_video_add_meta_box) : $mp_stacks_second_video_add_meta_box;
 	
+	//Globalize the and populate mp_stacks_features_items_array (do this before filter hooks are run)
+	global $global_mp_stacks_second_video_items_array;
+	$global_mp_stacks_second_video_items_array = $mp_stacks_second_video_items_array;
+	
 	/**
 	 * Custom filter to allow for add on plugins to hook in their own extra fields 
 	 */
 	$mp_stacks_second_video_items_array = has_filter('mp_stacks_second_video_items_array') ? apply_filters( 'mp_stacks_second_video_items_array', $mp_stacks_second_video_items_array) : $mp_stacks_second_video_items_array;
-	
 	
 	/**
 	 * Create Metabox class
@@ -88,4 +92,5 @@ function mp_stacks_second_video_create_meta_box(){
 	global $mp_stacks_second_video_meta_box;
 	$mp_stacks_second_video_meta_box = new MP_CORE_Metabox($mp_stacks_second_video_add_meta_box, $mp_stacks_second_video_items_array);
 }
-add_action('widgets_init', 'mp_stacks_second_video_create_meta_box');
+add_action('mp_brick_ajax_metabox', 'mp_stacks_second_video_create_meta_box');
+add_action('wp_ajax_mp_stacks_second_video_metabox_content', 'mp_stacks_second_video_create_meta_box');

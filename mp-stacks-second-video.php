@@ -1,21 +1,21 @@
 <?php
 /*
 Plugin Name: MP Stacks + Second Video
-Plugin URI: http://moveplugins.com
+Plugin URI: http://mintplugins.com
 Description: Display a second video in a brick
 Version: 1.0.0.0
-Author: Move Plugins
-Author URI: http://moveplugins.com
+Author: Mint Plugins
+Author URI: http://mintplugins.com
 Text Domain: MP_STACKS_SECOND_VIDEO
 Domain Path: languages
 License: GPL2
 */
 
-/*  Copyright 2014  Phil Johnston  (email : phil@moveplugins.com)
+/*  Copyright 2014  Phil Johnston  (email : phil@mintplugins.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Move Plugins Core.
+    published by the Free Software Mint Plugins Core.
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -134,17 +134,28 @@ function MP_STACKS_SECOND_VIDEO_include_files(){
 		require( MP_STACKS_SECOND_VIDEO_PLUGIN_DIR . 'includes/updater/mp-stacks-second-video-update.php' );
 		
 		/**
-		 * Media Filters for postgrid
+		 * Media Filters for second video
 		 */
 		require( MP_STACKS_SECOND_VIDEO_PLUGIN_DIR . 'includes/misc-functions/content-filters.php' );
 		
 		/**
-		 * Metabox for postgrid
+		 * Metabox for second video
 		 */
 		require( MP_STACKS_SECOND_VIDEO_PLUGIN_DIR . 'includes/metaboxes/mp-stacks-second-video-meta/mp-stacks-second-video-meta.php' );
 		
 		/**
-		 * Metabox which adds postgrid as a content type
+		 * Add this add on to the list of Active MP Stacks Add Ons
+		 */
+		if ( function_exists('mp_stacks_developer_textdomain') ){
+			function mp_stacks_second_video_add_active( $required_add_ons ){
+				$required_add_ons['mp_stacks_second_video'] = 'MP Stacks + Second Video';
+				return $required_add_ons;
+			}
+			add_filter( 'mp_stacks_active_add_ons', 'mp_stacks_second_video_add_active' );
+		}
+		
+		/**
+		 * Metabox which adds second video as a content type
 		 */
 		require( MP_STACKS_SECOND_VIDEO_PLUGIN_DIR . 'includes/metaboxes/mp-stacks-content/mp-stacks-content.php' );
 				
